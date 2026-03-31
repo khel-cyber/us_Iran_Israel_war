@@ -2,7 +2,6 @@ pandas
  numpy 
 matplotlib
  seaborn 
- re
  string
  os
  warnings
