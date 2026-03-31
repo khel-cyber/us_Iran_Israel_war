@@ -1,0 +1,23 @@
+pandas
+ numpy 
+matplotlib.pyplot 
+ matplotlib.patches
+ matplotlib.ticker 
+ seaborn 
+ re
+ string
+ os
+ warnings
+WordCloud
+nltk
+stopwords
+word_tokenize
+WordNetLemmatizer
+pos_tag
+SentimentIntensityAnalyzer
+TextBlob
+CountVectorizer
+TfidfVectorizer
+LatentDirichletAllocation
+WordCloud
+Counter
