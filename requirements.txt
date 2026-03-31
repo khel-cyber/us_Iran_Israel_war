@@ -2,8 +2,6 @@ pandas
  numpy 
 matplotlib
  seaborn 
- string
- os
  warnings
 WordCloud
 nltk
