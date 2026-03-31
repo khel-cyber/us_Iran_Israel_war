@@ -1,8 +1,6 @@
 pandas
  numpy 
-matplotlib.pyplot 
- matplotlib.patches
- matplotlib.ticker 
+matplotlib
  seaborn 
  re
  string
