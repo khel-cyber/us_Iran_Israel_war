@@ -2,17 +2,4 @@ pandas
  numpy 
 matplotlib
  seaborn 
- warnings
-WordCloud
-nltk
-stopwords
-word_tokenize
-WordNetLemmatizer
-pos_tag
-SentimentIntensityAnalyzer
-TextBlob
-CountVectorizer
-TfidfVectorizer
-LatentDirichletAllocation
-WordCloud
-Counter
+ 
