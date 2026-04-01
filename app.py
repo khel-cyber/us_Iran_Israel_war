@@ -590,28 +590,24 @@ def page_preprocessing():
     wc_words = [w for w,_ in top_100]
     wc_counts = [c for _,c in top_100]
     max_c, min_c = max(wc_counts), min(wc_counts)
-    # normalise sizes and scatter randomly
     np.random.seed(42)
-    x_pos = np.random.uniform(0, 100, len(wc_words))
-    y_pos = np.random.uniform(0, 100, len(wc_words))
-    sizes = [8 + 52 * (c - min_c) / (max_c - min_c + 1) for c in wc_counts]
-    # cool colormap approximation (cyan → blue → purple)
+    x_pos = np.random.uniform(10, 90, len(wc_words))
+    y_pos = np.random.uniform(10, 90, len(wc_words))
+    sizes = [10 + 70 * ((c - min_c) / (max_c - min_c + 1)) ** 0.5 for c in wc_counts]
     palette = px.colors.sequential.ice
     color_idx = [int((c - min_c)/(max_c - min_c + 1) * (len(palette)-1)) for c in wc_counts]
     marker_colors = [palette[i] for i in color_idx]
     fig28 = go.Figure(go.Scatter(
         x=x_pos.tolist(), y=y_pos.tolist(), mode='text',
         text=wc_words,
-        textfont=dict(
-            size=sizes,
-            color=marker_colors
-        ),
+        textfont=dict(size=sizes, color=marker_colors),
         hovertemplate='<b>%{text}</b><extra></extra>'
     ))
     fig28.update_layout(**pc(),
         title='Word Cloud — US/Israel–Iran War Corpus',
-        xaxis=dict(visible=False), yaxis=dict(visible=False),
-        height=500, margin=dict(t=50,l=10,r=10,b=10))
+        xaxis=dict(visible=False, range=[0, 100]),
+        yaxis=dict(visible=False, range=[0, 100]),
+        height=550, margin=dict(t=50, l=20, r=20, b=20))
     st.plotly_chart(fig28, use_container_width=True)
 
     if 'text_length' in df.columns:
@@ -719,8 +715,7 @@ def page_topic_modeling():
     st.plotly_chart(fig44, use_container_width=True)
     st.markdown("---")
 
-    # ── CELL 46 — Word Cloud per Topic (Plotly text scatter, 7 topics) ───
-    st.markdown("#### ☁️ Cell 46 — Word Clouds per Topic")
+   st.markdown("#### ☁️ Cell 46 — Word Clouds per Topic")
     NUM_TOP_WORDS = 15
     cols46 = st.columns(2)
     for i, topic in enumerate(lda_model.components_):
@@ -728,13 +723,12 @@ def page_topic_modeling():
         top_words  = [vocab_lda[idx] for idx in top_word_indices]
         top_weights = [topic[idx] for idx in top_word_indices]
         w_min, w_max = min(top_weights), max(top_weights)
-        sizes = [14 + 36 * (w - w_min) / (w_max - w_min + 1e-9) for w in top_weights]
-        np.random.seed(i * 7)
-        x_pos = np.random.uniform(5, 95, len(top_words))
-        y_pos = np.random.uniform(10, 90, len(top_words))
+        sizes = [12 + 38 * ((w - w_min) / (w_max - w_min + 1e-9)) ** 0.6 for w in top_weights]
+        np.random.seed(i * 13 + 5)
+        x_pos = np.random.uniform(15, 85, len(top_words))
+        y_pos = np.random.uniform(15, 85, len(top_words))
         color = COLORS[i]
-        # gradient shades of the topic colour
-        alphas = [0.5 + 0.5 * (w - w_min)/(w_max - w_min + 1e-9) for w in top_weights]
+        alphas = [0.6 + 0.4 * (w - w_min)/(w_max - w_min + 1e-9) for w in top_weights]
         fig_wc = go.Figure(go.Scatter(
             x=x_pos.tolist(), y=y_pos.tolist(), mode='text',
             text=top_words,
@@ -744,8 +738,9 @@ def page_topic_modeling():
         fig_wc.update_layout(
             plot_bgcolor='#0d1117', paper_bgcolor='#161b22', font_color='#e6edf3',
             title=dict(text=f'Topic {i+1}: {TOPIC_LABELS.get(i,"")}', font_color='#e6edf3', font_size=13),
-            xaxis=dict(visible=False), yaxis=dict(visible=False),
-            height=300, margin=dict(t=45,l=5,r=5,b=5)
+            xaxis=dict(visible=False, range=[0, 100]),
+            yaxis=dict(visible=False, range=[0, 100]),
+            height=380, margin=dict(t=45, l=20, r=20, b=20)
         )
         with cols46[i % 2]:
             st.plotly_chart(fig_wc, use_container_width=True)
