@@ -715,7 +715,7 @@ def page_topic_modeling():
     st.plotly_chart(fig44, use_container_width=True)
     st.markdown("---")
 
-   st.markdown("#### ☁️ Cell 46 — Word Clouds per Topic")
+    st.markdown("#### ☁️ Cell 46 — Word Clouds per Topic")
     NUM_TOP_WORDS = 15
     cols46 = st.columns(2)
     for i, topic in enumerate(lda_model.components_):
@@ -744,6 +744,7 @@ def page_topic_modeling():
         )
         with cols46[i % 2]:
             st.plotly_chart(fig_wc, use_container_width=True)
+            
     st.markdown("---")
 
     # ── CELL 47 — Topic Distribution by Source Stacked Bar ───────────────
