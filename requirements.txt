@@ -9,3 +9,5 @@ nltk
 textblob
 vaderSentiment
 wordcloud
+plotly
+ 
