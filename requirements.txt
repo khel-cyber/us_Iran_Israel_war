@@ -3,6 +3,8 @@ pandas
 numpy
 matplotlib
 seaborn 
-nltk
 textblob
 sklearn
+nltk
+textblob
+vaderSentiment
