@@ -714,7 +714,7 @@ def page_topic_modeling():
         xaxis=dict(tickangle=-30), height=450, margin=dict(t=50,b=100))
     st.plotly_chart(fig44, use_container_width=True)
     st.markdown("---")
-
+    
     st.markdown("#### ☁️ Cell 46 — Word Clouds per Topic")
     NUM_TOP_WORDS = 15
     cols46 = st.columns(2)
