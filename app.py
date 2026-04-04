@@ -27,6 +27,12 @@ st.markdown("""
 .stApp * { font-family:'DM Sans',sans-serif; }
 [data-testid="stSidebar"] { background:var(--bg-card) !important; border-right:1px solid var(--border) !important; }
 [data-testid="stSidebar"] * { color:var(--text-main) !important; }
+[data-testid="stFileUploaderDropzone"] { padding:8px !important; }
+[data-testid="stFileUploaderDropzoneInstructions"] { display:none !important; }
+[data-testid="stFileUploader"] label { display:none !important; }
+[data-testid="stFileUploader"] > div > label { display:none !important; }
+[data-testid="stFileUploaderDropzone"] > div > button { width:100% !important; }
+div[data-testid="stFileUploader"] section { min-height:unset !important; padding:4px !important; }
 [data-testid="metric-container"] { background:var(--bg-card); border:1px solid var(--border); border-radius:12px; padding:16px !important; }
 [data-testid="stMetricLabel"] { color:var(--text-muted) !important; font-size:0.8rem !important; }
 [data-testid="stMetricValue"] { color:var(--text-main) !important; font-size:1.6rem !important; font-weight:600 !important; }
@@ -298,13 +304,12 @@ def upload_widget(compact=False):
         <strong>📂 Upload Required:</strong> Upload your
         <code>combined_dataset.csv</code> file.
         .</div>""", unsafe_allow_html=True)
-        st.caption("📂 Select your CSV file:")
-    else:
-        st.caption("🔄 Upload a new dataset:")
+        
     f = st.file_uploader(
-        "x",
+        " ",
         type=["csv"],
-        label_visibility="collapsed")
+        label_visibility="collapsed"
+       )
 
     if f is not None:
         with st.spinner("Running full pipeline… 1–2 min for large datasets."):
@@ -333,9 +338,11 @@ def pc():
 # SIDEBAR
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("### 🌐 US / Israel–Iran War")
-    st.markdown("**Sentiment Analysis**")
-    st.divider()
+   st.markdown(
+        "<p style='font-size:0.8rem;font-weight:700;color:#e6edf3;margin:12px 0 2px 0;"
+        "line-height:1.5;'>🌐 US / Israel–Iran War<br>Sentiment Analysis</p>"
+        "<hr style='border-color:#30363d;margin:8px 0 12px 0;'>",
+        unsafe_allow_html=True)
 
     page = st.radio("nav", [
         "🏠  Project Overview",
