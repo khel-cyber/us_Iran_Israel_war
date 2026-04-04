@@ -306,11 +306,10 @@ def upload_widget(compact=False):
         .</div>""", unsafe_allow_html=True)
         
     f = st.file_uploader(
-        " ",
+        "Select your CSV file:",
         type=["csv"],
-        label_visibility="collapsed"
-       )
-
+        label_visibility="visible"
+    )
     if f is not None:
         with st.spinner("Running full pipeline… 1–2 min for large datasets."):
             try:
@@ -344,7 +343,7 @@ with st.sidebar:
         "<hr style='border-color:#30363d;margin:8px 0 12px 0;'>",
         unsafe_allow_html=True)
 
-    page = st.radio("nav", [
+    page = st.radio("Navigation", [
         "🏠  Project Overview",
         "📦  Data Collection",
         "🔧  Pre-processing",
@@ -778,7 +777,7 @@ def page_topic_modeling():
     st.plotly_chart(fig47, use_container_width=True)
 
     st.markdown("---")
-    with st.expander("💻 LDA Code (from notebook — unchanged)"):
+    with st.expander(" LDA Code "):
         st.code("""corpus = df['clean_text'].dropna().tolist()
 count_vectorizer = CountVectorizer(min_df=5, max_df=0.9)
 count_matrix = count_vectorizer.fit_transform(corpus)
@@ -982,7 +981,7 @@ def page_sentiment():
     st.markdown("---")
     st.markdown("#### 📋 Sentiment per Angle & Source (Tables)")
     for angle, summary in angle_results.items():
-        with st.expander(f"📌 {angle}  (n = {int(summary['count'].sum()):,})"):
+        with st.expander(f"  {angle}  (n = {int(summary['count'].sum()):,})"):
             st.dataframe(summary.reset_index(), use_container_width=True, hide_index=True)
 
 
