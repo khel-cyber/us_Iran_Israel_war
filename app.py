@@ -299,7 +299,8 @@ def upload_widget(compact=False):
         <code>combined_war_dataset(22)_2.csv</code> file.
         The full notebook pipeline runs automatically after upload.</div>""", unsafe_allow_html=True)
     f = st.file_uploader("Upload dataset CSV", type=["csv"],
-                         label_visibility="collapsed" if compact else "visible")
+                         label_visibility="visible")
+    
     if f is not None:
         with st.spinner("Running full pipeline… 1–2 min for large datasets."):
             try:
@@ -329,7 +330,7 @@ def pc():
 with st.sidebar:
     st.markdown("""
     <div style='padding:20px 0 10px 0;'>
-      <div style='font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;color:#e6edf3;line-height:1.4;'>🌐 US / Israel–Iran War<br>sentiment analysis</div>
+      <div style='font-family:"Playfair Display",serif;font-size:0.95rem;font-weight:700;color:#e6edf3;line-height:1.5;word-wrap:break-word;'>🌐 US / Israel–Iran War<br>Sentiment Analysis</div>
     </div>
     <hr style='border-color:#30363d;margin:0 0 16px 0;'>
     """, unsafe_allow_html=True)
