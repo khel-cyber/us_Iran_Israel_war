@@ -298,9 +298,14 @@ def upload_widget(compact=False):
         <strong>📂 Upload Required:</strong> Upload your
         <code>combined_dataset.csv</code> file.
         .</div>""", unsafe_allow_html=True)
-    f = st.file_uploader("Upload dataset CSV", type=["csv"],
-                         label_visibility="hidden")
-    
+        st.caption("📂 Select your CSV file:")
+    else:
+        st.caption("🔄 Upload a new dataset:")
+    f = st.file_uploader(
+        "x",
+        type=["csv"],
+        label_visibility="collapsed")
+
     if f is not None:
         with st.spinner("Running full pipeline… 1–2 min for large datasets."):
             try:
@@ -328,12 +333,9 @@ def pc():
 # SIDEBAR
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-    st.markdown("""
-    <div style='padding:20px 0 10px 0;'>
-      <div style='font-family:"Playfair Display",serif;font-size:0.85rem;font-weight:700;color:#e6edf3;line-height:1.5;white-space:normal;overflow-wrap:break-word;'>🌐 US / Israel–Iran War<br>Sentiment Analysis</div>
-    </div>
-    <hr style='border-color:#30363d;margin:0 0 16px 0;'>
-    """, unsafe_allow_html=True)
+    st.markdown("### 🌐 US / Israel–Iran War")
+    st.markdown("**Sentiment Analysis**")
+    st.divider()
 
     page = st.radio("nav", [
         "🏠  Project Overview",
