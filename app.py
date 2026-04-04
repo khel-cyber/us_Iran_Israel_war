@@ -338,7 +338,7 @@ def pc():
 # SIDEBAR
 # ─────────────────────────────────────────────────────────────────────────────
 with st.sidebar:
-   st.markdown(
+    st.markdown(
         "<p style='font-size:0.8rem;font-weight:700;color:#e6edf3;margin:12px 0 2px 0;"
         "line-height:1.5;'>🌐 US / Israel–Iran War<br>Sentiment Analysis</p>"
         "<hr style='border-color:#30363d;margin:8px 0 12px 0;'>",
